@@ -1,5 +1,6 @@
 interface GigabitEthernet0/0
- ip address 192.168.50.123 255.255.255.0 !!!
+ ip address 192.168.50.123 255.255.255.0 
+ ! please change to your VM nic bridge IP space !
 no shut
 hostname Router4
 ip domain name test.com
