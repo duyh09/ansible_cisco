@@ -12,4 +12,4 @@
    - name: Save config to file
      copy:
        content: "{{ show_run.stdout[0] }}"
-       dest: "backup/{{inventory_hostname}}.txt"
+       dest: "backup/{{inventory_hostname}} - {{ lookup('pipe', 'date +%Y-%m-%d-%H%M') }}txt" #this add timestamp#
