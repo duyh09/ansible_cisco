@@ -1,0 +1,89 @@
+-
+
+
+  - hosts: R1
+
+    tasks:
+
+       - name: configure interface settings
+         ios_config:
+          lines:
+              - no shut
+              - ip address 10.0.0.1 255.255.255.0
+          parents: interface GigabitEthernet0/1
+
+
+
+  - hosts: R2
+
+    tasks:
+
+       - name: configure interface settings
+         ios_config:
+          lines:
+              - no shut
+              - ip address 10.0.0.2 255.255.255.0
+          parents: interface GigabitEthernet0/3
+
+  - hosts: R2
+
+    tasks:
+
+       - name: configure interface settings
+         ios_config:
+          lines:
+              - no shut
+              - ip address 10.0.1.1 255.255.255.0
+          parents: interface GigabitEthernet0/1
+
+
+
+  - hosts: R3
+
+    tasks:
+
+       - name: configure interface settings
+         ios_config:
+          lines:
+              - no shut
+              - ip address 10.0.1.2 255.255.255.0
+          parents: interface GigabitEthernet0/1
+
+
+
+  - hosts: R1
+
+    tasks:
+
+       - name: BGP
+         ios_config:
+          lines:
+              - neighbor 10.0.0.2 remote-as 200
+              - neighbor 10.1.4.2 remote-as 400
+              - network 172.16.17.0
+              - redistribute connected
+          parents: Router BGP 100
+
+  - hosts: R2
+
+    tasks:
+
+       - name: BGP
+         ios_config:
+          lines:
+              - neighbor 10.0.0.1 remote-as 100
+              - neighbor 10.0.1.2 remote-as 300
+              - redistribute connected
+          parents: Router BGP 200
+
+
+  - hosts: R3
+
+    tasks:
+
+       - name: BGP
+         ios_config:
+          lines:
+              - neighbor 10.0.1.1 remote-as 200
+              - redistribute connected
+          parents: Router BGP 300
