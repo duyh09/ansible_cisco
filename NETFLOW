@@ -1,0 +1,32 @@
+flow record ANET1
+  match ipv4 source address
+  match ipv4 destination address
+  match ip protocol
+  match transport source-port
+  match transport destination-port
+  collect counter packets
+
+flow monitor ANET
+record ANET1
+!!!
+apply int interface
+
+
+flow exporter ee
+version 9
+flow record rr
+  match ipv4 source address
+  match ipv4 destination address
+  match transport source-port
+  match transport destination-port
+  collect counter packets
+flow monitor foo
+  record rr
+  exporter ee
+
+
+interface  
+
+
+ip flow monitor foo input
+ ip flow monitor foo output
