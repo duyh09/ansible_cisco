@@ -2,9 +2,10 @@ from netmiko import ConnectHandler
 from netmiko.ssh_exception import NetMikoTimeoutException
 from paramiko.ssh_exception import SSHException
 from netmiko.ssh_exception import AuthenticationException
+# config file for prefix-list or any kind of config
 with open('prelist') as f:
     commands_list = f.read().splitlines()
-
+# device ip file
 with open('r5r6') as f:
     devices_list = f.read().splitlines()
 
