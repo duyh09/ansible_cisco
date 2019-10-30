@@ -1,0 +1,112 @@
+XR1
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.1.12.2 255.255.255.0
+ ipv6 address 2001:11:12::2/64
+ no shut
+ 
+
+interface GigabitEthernet0/0/0/2
+ ipv4 address 10.2.11.2 255.255.255.0
+ ipv6 address 2001:2:11::2/64
+no shut
+
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.4.11.2 255.255.255.0
+ ipv6 address 2001:4:11::2/64
+no shut
+
+
+R1
+interface GigabitEthernet0/2
+ ip address 10.1.11.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:1:11::1/64
+no shut
+
+interface GigabitEthernet0/0
+ ip address 10.1.5.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:1:5::1/64
+no shut
+interface GigabitEthernet0/1
+ ip address 10.1.2.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:1:2::1/64
+no shut
+
+interface GigabitEthernet0/3
+ ip address 10.1.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:1:12::1/64
+no shut
+end
+wr
+!
+
+R2
+interface GigabitEthernet0/1
+ ip address 10.1.2.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:1:2::2/64
+no shut
+
+interface GigabitEthernet0/2
+ ip address 10.2.11.3 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:2:11::3/64
+no shut
+interface GigabitEthernet0/3
+ ip address 10.2.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ ipv6 address 2001:12:12::2/64
+no shut
+
+interface GigabitEthernet0/4
+ ip address 10.2.13.2 255.255.255.0
+ ipv6 address 2001:2:13::2/64
+no shut
+interface GigabitEthernet0/0
+ ip address 10.2.3.2 255.255.255.0
+ ipv6 address 2001:2:3:2/64
+no shut
+end
+wr
+!
+Xr2
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.11.12.22 255.255.255.0
+ ipv6 address 2001:11:12::22/64
+ no shut
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.1.12.22 255.255.255.0
+ ipv6 address 2001:1:12::22/64
+ no shut
+ interface GigabitEthernet0/0/0/2
+ ipv4 address 10.2.12.22 255.255.255.0
+ ipv6 address 2001:2:12::22/64
+ no shut
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.3.12.22 255.255.255.0
+ ipv6 address 2001:3:12::22/64
+ no shut
+ interface GigabitEthernet0/0/0/4
+ ipv4 address 10.12.13.22 255.255.255.0
+ ipv6 address 2001:12:13::22/64
+ no shut
+commmit
+
+
